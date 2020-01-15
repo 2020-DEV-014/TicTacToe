@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.bnp.tictactoe.views.GameViewModel" />
+
+        <import type="com.bnp.tictactoe.presentation.GamePresentationKt" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/board_bg">
+
+        <!-- first line -->
+
+        <TextView
+            android:id="@+id/zeroZero"
+            style="@style/SquareText"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:text="@{GamePresentationKt.getTextPresentation(viewModel.zeroZero)}"
+            app:layout_constraintBottom_toTopOf="@+id/oneZero"
+            app:layout_constraintDimensionRatio="1"
+            app:layout_constraintHorizontal_chainStyle="packed"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toLeftOf="@+id/zeroOne"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_chainStyle="packed" />
+
+        <TextView
+            android:id="@+id/zeroOne"
+            style="@style/SquareText"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:padding="2dp"
+            android:text="@{GamePresentationKt.getTextPresentation(viewModel.zeroOne)}"
+            app:layout_constraintBottom_toTopOf="@+id/oneOne"
+            app:layout_constraintDimensionRatio="1"
+            app:layout_constraintLeft_toRightOf="@+id/zeroZero"
+            app:layout_constraintRight_toLeftOf="@+id/zeroTwo"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_chainStyle="packed" />
+
+        <TextView
+            android:id="@+id/zeroTwo"
+            style="@style/SquareText"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:padding="2dp"
+            android:text="@{GamePresentationKt.getTextPresentation(viewModel.zeroTwo)}"
+            app:layout_constraintBottom_toTopOf="@+id/oneTwo"
+            app:layout_constraintDimensionRatio="1"
+            app:layout_constraintLeft_toRightOf="@+id/zeroOne"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_chainStyle="packed" />
+
+        <!-- second line -->
+
+        <TextView
+            android:id="@+id/oneZero"
+            style="@style/SquareText"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:padding="2dp"
+            android:text="@{GamePresentationKt.getTextPresentation(viewModel.oneZero)}"
+            app:layout_constraintBottom_toTopOf="@+id/twoZero"
+            app:layout_constraintDimensionRatio="1"
+            app:layout_constraintHorizontal_chainStyle="packed"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toLeftOf="@+id/oneOne"
+            app:layout_constraintTop_toBottomOf="@+id/zeroZero" />
+
+        <TextView
+            android:id="@+id/oneOne"
+            style="@style/SquareText"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:padding="2dp"
+            android:text="@{GamePresentationKt.getTextPresentation(viewModel.oneOne)}"
+            app:layout_constraintBottom_toTopOf="@+id/twoOne"
+            app:layout_constraintDimensionRatio="1"
+            app:layout_constraintLeft_toRightOf="@+id/oneZero"
+            app:layout_constraintRight_toLeftOf="@+id/oneTwo"
+            app:layout_constraintTop_toBottomOf="@+id/zeroOne" />
+
+        <TextView
+            android:id="@+id/oneTwo"
+            style="@style/SquareText"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:padding="2dp"
+            android:text="@{GamePresentationKt.getTextPresentation(viewModel.oneTwo)}"
+            app:layout_constraintBottom_toTopOf="@+id/twoTwo"
+            app:layout_constraintDimensionRatio="1"
+            app:layout_constraintLeft_toRightOf="@+id/oneOne"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/zeroTwo" />
+
+        <!-- third line -->
+
+        <TextView
+            android:id="@+id/twoZero"
+            style="@style/SquareText"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:padding="2dp"
+            android:text="@{GamePresentationKt.getTextPresentation(viewModel.twoZero)}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintDimensionRatio="1"
+            app:layout_constraintHorizontal_chainStyle="packed"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toLeftOf="@+id/twoOne"
+            app:layout_constraintTop_toBottomOf="@+id/oneZero" />
+
+        <TextView
+            android:id="@+id/twoOne"
+            style="@style/SquareText"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:padding="2dp"
+            android:text="@{GamePresentationKt.getTextPresentation(viewModel.twoOne)}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintDimensionRatio="1"
+            app:layout_constraintLeft_toRightOf="@+id/twoZero"
+            app:layout_constraintRight_toLeftOf="@+id/twoTwo"
+            app:layout_constraintTop_toBottomOf="@+id/oneOne" />
+
+        <TextView
+            android:id="@+id/twoTwo"
+            style="@style/SquareText"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:padding="2dp"
+            android:text="@{GamePresentationKt.getTextPresentation(viewModel.twoTwo)}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintDimensionRatio="1"
+            app:layout_constraintLeft_toRightOf="@+id/twoOne"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/oneTwo" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
