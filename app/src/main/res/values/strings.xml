@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">TicTacToe</string>
     <string name="player_turn_instruction">Player\'s turn :</string>
+    <string name="error_playing_position">You can\'t play at this position</string>
 </resources>

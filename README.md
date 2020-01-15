@@ -4,7 +4,7 @@ Based on the kata exercise available at [this address](https://github.com/stepha
 Made as part of an interview process.
 
 #### Current status
-The game and the current player is displayed but not yet playable. The logic for playing is implemented.
+The game is playable, but has no end.
 
 #### Technology
 This project use the following technology:
@@ -12,6 +12,7 @@ This project use the following technology:
 - ConstraintLayout
 - DataBinding
 - ViewModel
+- LiveData
 - Junit testing
 
 #### Build this app

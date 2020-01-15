@@ -18,7 +18,7 @@ class Game {
 
     fun playAtPosition(line: Int, column: Int) {
         if (getPlayerAtPosition(line, column) != Player.NONE) {
-            throw IllegalArgumentException("This square is already played")
+            throw IllegalPlayingPositionException("This square is already played")
         }
         board.squares[line][column] = currentPlayer
         currentPlayer = if (currentPlayer == Player.X) {

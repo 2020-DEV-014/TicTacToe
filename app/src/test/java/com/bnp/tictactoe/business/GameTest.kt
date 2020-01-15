@@ -30,24 +30,28 @@ class GameTest {
             fail("The getPlayerAtPosition should have failed because the column was too high")
         } catch (exception: Exception) {
             assertTrue(exception is IllegalArgumentException)
+            assertFalse(exception is IllegalPlayingPositionException)
         }
         try {
             game.getPlayerAtPosition(0, -1)
             fail("The getPlayerAtPosition should have failed because the column was too low")
         } catch (exception: Exception) {
             assertTrue(exception is IllegalArgumentException)
+            assertFalse(exception is IllegalPlayingPositionException)
         }
         try {
             game.getPlayerAtPosition(Game.BOARD_SIZE, 0)
             fail("The getPlayerAtPosition should have failed because the line was too high")
         } catch (exception: Exception) {
             assertTrue(exception is IllegalArgumentException)
+            assertFalse(exception is IllegalPlayingPositionException)
         }
         try {
             game.getPlayerAtPosition(-1, 0)
             fail("The getPlayerAtPosition should have failed because the line was too low")
         } catch (exception: Exception) {
             assertTrue(exception is IllegalArgumentException)
+            assertFalse(exception is IllegalPlayingPositionException)
         }
     }
 
@@ -86,7 +90,7 @@ class GameTest {
             game.playAtPosition(0, 0)
             fail("The player shouldn't be able to play this square")
         } catch (exception: Exception) {
-            assertTrue(exception is IllegalArgumentException)
+            assertTrue(exception is IllegalPlayingPositionException)
         }
     }
 }
