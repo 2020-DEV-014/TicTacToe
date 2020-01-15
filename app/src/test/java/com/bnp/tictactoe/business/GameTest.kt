@@ -1,5 +1,6 @@
 package com.bnp.tictactoe.business
 
+import com.bnp.tictactoe.model.Player
 import org.junit.Assert.*
 import org.junit.Before
 import org.junit.Test
@@ -48,5 +49,10 @@ class GameTest {
         } catch (exception: Exception) {
             assertTrue(exception is IllegalArgumentException)
         }
+    }
+
+    @Test
+    fun getFirstPlayer() {
+        assertEquals(Player.X, game.getCurrentPlayer())
     }
 }

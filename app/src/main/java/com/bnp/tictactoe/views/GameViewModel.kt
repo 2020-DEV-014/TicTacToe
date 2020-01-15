@@ -29,6 +29,9 @@ class GameViewModel : ViewModel() {
     private val twoTwoMutable = MutableLiveData<Player>()
     val twoTwo: LiveData<Player> = twoTwoMutable
 
+    private val currentPlayerMutable = MutableLiveData<Player>()
+    val currentPlayer: LiveData<Player> = currentPlayerMutable
+
     init {
         zeroZeroMutable.value = game.getPlayerAtPosition(0, 0)
         zeroOneMutable.value = game.getPlayerAtPosition(0, 1)
@@ -39,6 +42,7 @@ class GameViewModel : ViewModel() {
         twoZeroMutable.value = game.getPlayerAtPosition(2, 0)
         twoOneMutable.value = game.getPlayerAtPosition(2, 1)
         twoTwoMutable.value = game.getPlayerAtPosition(2, 2)
-    }
 
+        currentPlayerMutable.value = game.getCurrentPlayer()
+    }
 }

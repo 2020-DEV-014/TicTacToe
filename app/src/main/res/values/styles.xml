@@ -15,4 +15,11 @@
         <item name="android:background">@color/square_bg</item>
     </style>
 
+    <style name="Instruction">
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">22sp</item>
+        <item name="android:gravity">center</item>
+        <item name="android:padding">8dp</item>
+    </style>
+
 </resources>

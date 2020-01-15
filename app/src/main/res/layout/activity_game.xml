@@ -144,5 +144,21 @@
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/oneTwo" />
 
+        <TextView
+            android:id="@+id/player_turn_title"
+            style="@style/Instruction"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/player_turn_instruction"
+            app:layout_constraintTop_toBottomOf="@+id/twoOne" />
+
+        <TextView
+            android:id="@+id/player_turn_value"
+            style="@style/Instruction"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@{GamePresentationKt.getTextPresentation(viewModel.currentPlayer)}"
+            app:layout_constraintTop_toBottomOf="@+id/player_turn_title" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

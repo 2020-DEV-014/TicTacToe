@@ -32,4 +32,9 @@ class GameViewModelTest {
         assertEquals(Player.NONE, viewModel.twoOne.getOrAwaitValue())
         assertEquals(Player.NONE, viewModel.twoTwo.getOrAwaitValue())
     }
+
+    @Test
+    fun getPlayerPlayingAtStartup() {
+        assertEquals(Player.X, viewModel.currentPlayer.getOrAwaitValue())
+    }
 }
