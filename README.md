@@ -4,7 +4,7 @@ Based on the kata exercise available at [this address](https://github.com/stepha
 Made as part of an interview process.
 
 #### Current status
-The game and the current player is displayed but not yet playable.
+The game and the current player is displayed but not yet playable. The logic for playing is implemented.
 
 #### Technology
 This project use the following technology:

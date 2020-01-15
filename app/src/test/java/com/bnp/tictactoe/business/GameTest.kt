@@ -55,4 +55,38 @@ class GameTest {
     fun getFirstPlayer() {
         assertEquals(Player.X, game.getCurrentPlayer())
     }
+
+    @Test
+    fun isSquareChangedAfterPlay() {
+        game.playAtPosition(0, 0)
+        assertEquals(Player.X, game.getPlayerAtPosition(0, 0))
+        for (line in 0 until Game.BOARD_SIZE) {
+            for (column in 0 until Game.BOARD_SIZE) {
+                if (line == 0 && column == 0) {
+                    continue
+                }
+                assertFalse(game.getPlayerAtPosition(line, column).isPlayer)
+            }
+        }
+    }
+
+    @Test
+    fun isPlayerChangedAfterPlay() {
+        game.playAtPosition(0, 0)
+        assertEquals(Player.O, game.getCurrentPlayer())
+        game.playAtPosition(0, 1)
+        assertEquals(Player.X, game.getCurrentPlayer())
+
+    }
+
+    @Test
+    fun cantPlayOnOccupiedSquare() {
+        game.playAtPosition(0, 0)
+        try {
+            game.playAtPosition(0, 0)
+            fail("The player shouldn't be able to play this square")
+        } catch (exception: Exception) {
+            assertTrue(exception is IllegalArgumentException)
+        }
+    }
 }
