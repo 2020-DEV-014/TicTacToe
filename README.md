@@ -4,7 +4,7 @@ Based on the kata exercise available at [this address](https://github.com/stepha
 Made as part of an interview process.
 
 #### Current status
-The game is playable, but has no end.
+The game is playable, but doesn't show when there is a winner.
 
 #### Technology
 This project use the following technology:

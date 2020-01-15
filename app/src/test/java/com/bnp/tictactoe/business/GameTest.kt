@@ -4,6 +4,7 @@ import com.bnp.tictactoe.model.Player
 import org.junit.Assert.*
 import org.junit.Before
 import org.junit.Test
+import java.lang.IllegalStateException
 
 class GameTest {
 
@@ -92,5 +93,112 @@ class GameTest {
         } catch (exception: Exception) {
             assertTrue(exception is IllegalPlayingPositionException)
         }
+    }
+
+    @Test
+    fun checkHorizontalVictory() {
+        checkOneLineVictory(0, 1)
+        game = Game()
+        checkOneLineVictory(1, 2)
+        game = Game()
+        checkOneLineVictory(2, 0)
+    }
+
+    private fun checkOneLineVictory(winningLine: Int, losingLine: Int) {
+        assertNotEquals(winningLine, losingLine)
+        game.playAtPosition(winningLine, 0)
+        assertFalse(game.winner.isPlayer)
+        game.playAtPosition(losingLine, 0)
+        assertFalse(game.winner.isPlayer)
+        game.playAtPosition(winningLine, 1)
+        assertFalse(game.winner.isPlayer)
+        game.playAtPosition(losingLine, 1)
+        assertFalse(game.winner.isPlayer)
+        game.playAtPosition(winningLine, 2)
+        assertEquals(Player.X, game.winner)
+    }
+
+    @Test
+    fun checkVerticalVictory() {
+        checkOneColumnVictory(0, 1)
+        game = Game()
+        checkOneColumnVictory(1, 2)
+        game = Game()
+        checkOneColumnVictory(2, 0)
+    }
+
+    private fun checkOneColumnVictory(winningColumn: Int, losingColumn: Int) {
+        assertNotEquals(winningColumn, losingColumn)
+        game.playAtPosition(0, winningColumn)
+        assertFalse(game.winner.isPlayer)
+        game.playAtPosition(0, losingColumn)
+        assertFalse(game.winner.isPlayer)
+        game.playAtPosition(1, winningColumn)
+        assertFalse(game.winner.isPlayer)
+        game.playAtPosition(1, losingColumn)
+        assertFalse(game.winner.isPlayer)
+        game.playAtPosition(2, winningColumn)
+        assertEquals(Player.X, game.winner)
+    }
+
+    @Test
+    fun checkDownwardVictory() {
+        game.playAtPosition(0, 0)
+        assertFalse(game.winner.isPlayer)
+        game.playAtPosition(1, 0)
+        assertFalse(game.winner.isPlayer)
+        game.playAtPosition(1, 1)
+        assertFalse(game.winner.isPlayer)
+        game.playAtPosition(1, 2)
+        assertFalse(game.winner.isPlayer)
+        game.playAtPosition(2, 2)
+        assertEquals(Player.X, game.winner)
+
+    }
+
+    @Test
+    fun checkUpwardVictory() {
+        game.playAtPosition(2, 0)
+        assertFalse(game.winner.isPlayer)
+        game.playAtPosition(1, 0)
+        assertFalse(game.winner.isPlayer)
+        game.playAtPosition(1, 1)
+        assertFalse(game.winner.isPlayer)
+        game.playAtPosition(1, 2)
+        assertFalse(game.winner.isPlayer)
+        game.playAtPosition(0, 2)
+        assertEquals(Player.X, game.winner)
+    }
+
+    @Test
+    fun cantPlayAfterWinning() {
+        checkOneLineVictory(1,0)
+        try {
+            game.playAtPosition(2, 0)
+            fail("The game should block after a victory")
+        } catch (exception: Exception) {
+            assertTrue(exception is IllegalStateException)
+        }
+    }
+
+    @Test
+    fun isFinishedAfterADraw() {
+        game.playAtPosition(0,0)
+        game.playAtPosition(0,1)
+        game.playAtPosition(0,2)
+        game.playAtPosition(1,1)
+        game.playAtPosition(1,0)
+        game.playAtPosition(1,2)
+        game.playAtPosition(2,2)
+        game.playAtPosition(2,0)
+        game.playAtPosition(2,1)
+        assertFalse(game.winner.isPlayer)
+        assertTrue(game.isFinished())
+    }
+
+    @Test
+    fun isFinishedAfterWin() {
+        checkOneLineVictory(0, 1)
+        assertTrue(game.isFinished())
     }
 }
