@@ -169,5 +169,12 @@
             android:text="@{GamePresentationKt.getTextPresentation(viewModel.currentPlayer)}"
             app:layout_constraintTop_toBottomOf="@+id/player_turn_title" />
 
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            style="@style/Instruction"
+            app:layout_constraintBottom_toTopOf="@id/zeroOne"
+            android:text="@{viewModel.winningMessage}" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

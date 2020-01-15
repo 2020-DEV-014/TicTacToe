@@ -2,9 +2,7 @@ package com.bnp.tictactoe.views
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import com.bnp.tictactoe.model.Player
-import org.junit.Assert.assertNull
-import org.junit.Assert.assertEquals
-import org.junit.Assert.assertNotNull
+import org.junit.Assert.*
 import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
@@ -68,5 +66,24 @@ class GameViewModelTest {
     private fun generatePlayingError() {
         viewModel.playAtPosition(0, 0)
         viewModel.playAtPosition(0, 0)
+    }
+
+    @Test
+    fun dontChangePlayerAfterPlayingError() {
+        viewModel.playAtPosition(0, 0)
+        val currentPlayer = viewModel.currentPlayer.getOrAwaitValue()
+        viewModel.playAtPosition(0, 0)
+        assertEquals(currentPlayer, viewModel.currentPlayer.getOrAwaitValue())
+    }
+
+    @Test
+    fun cantPlayAfterFinish() {
+        viewModel.playAtPosition(0, 0)
+        viewModel.playAtPosition(1, 0)
+        viewModel.playAtPosition(0, 1)
+        viewModel.playAtPosition(1, 1)
+        viewModel.playAtPosition(0, 2)
+        viewModel.playAtPosition(2, 0)
+        assertFalse(viewModel.liveDataBoard[2][0].getOrAwaitValue().isPlayer)
     }
 }

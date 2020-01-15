@@ -2,4 +2,8 @@
     <string name="app_name">TicTacToe</string>
     <string name="player_turn_instruction">Player\'s turn :</string>
     <string name="error_playing_position">You can\'t play at this position</string>
+    <string name="winning_while_game">Still no winner</string>
+    <string name="winning_x">Congratulation player X !</string>
+    <string name="winning_o">Well played player O !</string>
+    <string name="winning_none">It\'s a draw</string>
 </resources>
